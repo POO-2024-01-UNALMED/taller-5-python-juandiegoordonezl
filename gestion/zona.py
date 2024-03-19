@@ -1,7 +1,7 @@
 class Zona:
     def __init__(self,nombre,zoo):
         self._nombre=nombre
-        self._zoo=[]
+        self._zoo=None
         self._zoo.append(zoo)
         self._animales=[]
     

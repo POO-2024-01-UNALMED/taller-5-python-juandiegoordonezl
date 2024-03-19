@@ -1,5 +1,5 @@
 import zooAnimales
-from gestion.zona import zona
+from gestion.zona import Zona
 class Animal:
     def __init__(self,nombre,edad,habitat,genero):
         self._nombre=nombre
