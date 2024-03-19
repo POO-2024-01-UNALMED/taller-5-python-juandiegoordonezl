@@ -6,7 +6,8 @@ class Animal:
         self._edad=edad
         self._habitat=habitat
         self._genero=genero
-        self._zona=[]
+        self._zona=None
+        Animal._totalAnimales += 1
     def movimiento(self):
         return "desplazarse"
     
