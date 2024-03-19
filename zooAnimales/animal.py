@@ -1,6 +1,7 @@
 import zooAnimales
-from gestion.zona import Zona
 class Animal:
+    
+    _totalAnimales=0
     def __init__(self,nombre,edad,habitat,genero):
         self._nombre=nombre
         self._edad=edad
@@ -54,7 +55,7 @@ class Animal:
         self._zona=zona
     
     def toString(self):
-        if self._zona!=None:
-            return "Mi nombre es "+self._nombre+", tengo una edad de "+str(self._edad)+", habito en "+self.habitat+" y mi genero es "+self._genero+", la zona en la que me ubico es "+self._zona[0].getNombre()+", en el "+self._zona[0].getZoo().getNombre()
+        if self._zona == None:
+            return "Mi nombre es " + str(self._nombre) + ", tengo una edad de " + str(self._edad) + ", habito en " + str(self._habitat) + " y mi genero es " + str(self._genero)
         else:
-            return "Mi nombre es "+self._nombre+", tengo una edad de "+str(self._edad)+", habito en "+self.habitat+" y mi genero es "+self._genero
+            return "Mi nombre es " + str(self._nombre) + ", tengo una edad de " + str(self._edad) + ", habito en " + str(self._habitat) + " y mi genero es " + str(self._genero) + ", la zona en la que me ubico es " + str(self._zona) + ", en el " + str(self._zona.getZoo().getNombre())
