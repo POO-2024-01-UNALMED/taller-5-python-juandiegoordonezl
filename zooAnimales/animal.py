@@ -1,41 +1,51 @@
-from zooAnimales.animal import Animal
-
-class Anfibio(Animal):
-    ranas=0
-    salamandras=0
-    listado=[]
-    def __init__(self,nombre,edad,habitat,genero,colorPiel,venenoso):
-        super.__init__(nombre,edad,habitat,genero)
-        self._colorPiel=colorPiel
-        self.venenoso=venenoso
-        Anfibio.agregarListado(self)
+import zooAnimales
+from gestion.zona import zona
+class Animal:
+    def __init__(self,nombre,edad,habitat,genero):
+        self._nombre=nombre
+        self._edad=edad
+        self._habitat=habitat
+        self._genero=genero
+        self._zona=[]
+    def movimiento(self):
+        return "desplazarse"
+    
+    @classmethod
+    def totalPorTipo(cls):
+        return "Mamiferos : " + str(zooAnimales.mamifero.Mamifero.cantidadMamiferos()) + "\nAves : " + str(zooAnimales.ave.Ave.cantidadAves()) + "\nReptiles : " + str(zooAnimales.reptil.Reptil.cantidadReptiles()) + "\nPeces : " + str(zooAnimales.pez.Pez.cantidadPeces()) + "\nAnfibios : " + str(zooAnimales.anfibio.Anfibio.cantidadAnfibios())
+    
+    def getNombre(self):
+        return self._nombre
+    
+    def setNombre(self,nombre):
+        self._nombre=nombre
+    
+    def getEdad(self):
+        return self._edad
+    
+    def setEdad(self,edad):
+        self._edad=edad
         
-    def agregarListado(cls,a):
-        cls.listado.append(a)
+    def getHabitat(self):
+        return self._habitat
     
-    def cantidadPeces(cls):
-        return (len(cls.listado))
+    def setHabitat(self,habitat):
+        self._habitat=habitat
+        
+    def getGenero(self):
+        return self._genero
     
-    def crearRana(cls,nombre,edad,genero):
-        rana=Anfibio(nombre,edad,"selva",genero,"rojo",True)
-        cls.ranas+=1
-        Anfibio.agregarlistado(rana)
-        return rana
+    def setGenero(self,genero):
+        self._genero=genero
+        
+    def getZona(self):
+        return self._zona
     
-    def crearSalamandra(cls,nombre,edad,genero):
-        salamandra=Anfibio(nombre,edad,"selva",genero,"negro y amarillo",False)
-        cls.aguilas+=1
-        Anfibio.agregarlistado(salamandra)
-        return salamandra
+    def setZona(self,zona):
+        self._zona=zona
     
-    def getColorPiel(self):
-        return self._colorPiel
-    
-    def setColorPiel(self,colorPiel):
-        self._colorPiel=colorPiel
-    
-    def getVenenoso(self):
-        return self._venenoso
-    
-    def setVenenoso(self,venenoso):
-        self._venenoso=venenoso
+    def toString(self):
+        if self._zona!=[]:
+            return "Mi nombre es "+self._nombre+", tengo una edad de "+str(self._edad)+", habito en "+self.habitat+" y mi genero es "+self._genero+", la zona en la que me ubico es "+self._zona[0].getNombre()+", en el "+self._zona[0].getZoo().getNombre()
+        else:
+            return "Mi nombre es "+self._nombre+", tengo una edad de "+str(self._edad)+", habito en "+self.habitat+" y mi genero es "+self._genero
